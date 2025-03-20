@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  },
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "bot de estudos de programacao para discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bot-discord"
+  ],
+  "author": "Cleber Lucas",
+  "license": "ISC"
+}
