@@ -3,6 +3,9 @@ const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config()
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; //desabilitar a verificação do certificado ssl
+
+
 const{ TOKEN, CLIENT_ID, GUILD_ID } = process.env
 
 //importação de comandos

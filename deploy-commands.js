@@ -1,5 +1,5 @@
 const {REST, Routes, Client, GatewayIntentBits, Collection } = require("discord.js")
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; //desabilitar a verificação do certificado ssl
 
 const dotenv = require('dotenv');
 dotenv.config()
