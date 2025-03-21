@@ -20,18 +20,33 @@ async function formalizarChamado(resumo){
                 contents: [{
                     parts: [{ text: `Formalize um chamado de Infraestrutura de TI com as seguintes informações, extraídas do resumo fornecido. Verifique as seguintes informações:
 
-- **Data de hoje** (verifique na web)
-- **Título** do chamado
-- **Solicitante** (nome ou departamento)
-- **Ações realizadas** até o momento
-- **Setor** envolvido (se aplicável)
-- **Empresa** e **sede** (se houver)
-  
-Com base no resumo fornecido abaixo, organize essas informações de maneira clara e formal, como se fosse um documento oficial de registro:
+                        - **Título** do chamado, com o nome do setor(se for informado), e empresa no formato ( titulo = problema estritamente resumido - Empresa/setor)
+                        - **Solicitante:**
+                        - **Descrição do problema:**
+                        - **Ações realizadas** até o momento
+                        - **Observações** (essa opção so adicione se estiver disponivel no resumo.)
 
-Resumo: 
-\n\n${resumo}
-` }]
+                        siga esse padrão sem exceção de exemplo:
+                        Renomeação de Computador e Inventário GLPI - Premium/RH
+                        Solicitante: Infraestrutura TI (South)
+
+                        Descrição do problema:
+
+                        O computador da usuária Thais, do setor de RH na sede Grow da Premium, foi renomeado para "PRMCWNOT24" e inserido no inventário do GLPI. Esta ação foi necessária para o controle de inventário da empresa, e a máquina é essencial para as atividades da usuária. 
+
+                        Ações realizadas:
+
+                        Renomeação do computador para "PRMCWNOT24".
+                        Instalação do agente GLPI no computador.
+                        Forçada a entrada do computador no inventário do GLPI.
+                        Validação da presença do computador no inventário do GLPI.
+                                                
+                        Com base no resumo fornecido abaixo, organize essas informações de maneira clara e formal, como se fosse um documento oficial de registro:
+                        
+
+                        Resumo: 
+                        \n\n${resumo}`
+                     }]
                 }]
             }
         });
@@ -51,7 +66,7 @@ module.exports = {
         .setDescription('Formaliza um chamado usando IA do GEMINI')
         .addStringOption(option =>
             option.setName('resumo')
-                .setDescription('Descreva o problema')
+                .setDescription('Descreva o problema, não economize nos detalhes...')
                 .setRequired(true)),
 
     async execute(interaction) {
