@@ -29,4 +29,4 @@ Crie um arquivo `.env` e adicione suas credenciais:
 DISCORD_TOKEN=seu_token_aqui
 GEMINI_API_KEY=sua_chave_gemini_aqui
 CLIENTE_ID=seu_cliente_id_aqui
-GUILD_ID_
+GUILD_ID=seu_servidor_aqui
