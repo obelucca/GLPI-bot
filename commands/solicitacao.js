@@ -1,5 +1,6 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder, AttachmentBuilder } = require("discord.js");
 const axios = require('axios');
+const fs = require('fs');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -11,7 +12,7 @@ async function solicitacao(resumo) {
             `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
             {
                 contents: [{
-                    parts: [{ text: `Formalize um chamado de solicitação de Infraestrutura de TI com as seguintes informações:
+                    parts: [{ text: `Formalize um chamado de solicitação de Infraestrutura de TI com as seguintes informações, pode resumir:
                     
                     - **Título** do chamado, incluindo setor e empresa (se disponíveis).
                     - **Solicitante**:
@@ -34,18 +35,6 @@ async function solicitacao(resumo) {
     }
 }
 
-async function sendLongMessage(interaction, message) {
-    const chunks = message.match(/[\s\S]{1,2000}/g) || ["❌ Erro ao gerar o chamado."];
-
-    for (let i = 0; i < chunks.length; i++) {
-        if (i === 0) {
-            await interaction.editReply(chunks[i]); // Primeira parte substitui a resposta original
-        } else {
-            await interaction.followUp(chunks[i]); // As demais são enviadas separadamente
-        }
-    }
-}
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('solicitacao')
@@ -61,6 +50,17 @@ module.exports = {
         await interaction.reply("⏳ Processando a formalização da sua solicitação...");
         const chamadoFormalizado = await solicitacao(resumo);
 
-        await sendLongMessage(interaction, `📌 **Chamado Formalizado:**\n${chamadoFormalizado}`);
+        if (chamadoFormalizado.length > 2000) {
+            const filePath = "chamado_formalizado.txt";
+            fs.writeFileSync(filePath, chamadoFormalizado, "utf-8");
+            const attachment = new AttachmentBuilder(filePath);
+            await interaction.editReply({
+                content: "📎 O chamado formalizado é muito longo. Baixe o arquivo abaixo:",
+                files: [attachment]
+            });
+            fs.unlinkSync(filePath); // Remove o arquivo após o envio
+        } else {
+            await interaction.editReply(`📌 **Chamado Formalizado:**\n${chamadoFormalizado}`);
+        }
     }
 };
