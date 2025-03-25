@@ -18,7 +18,7 @@ async function formalizarChamado(resumo){
             },
             data: {
                 contents: [{
-                    parts: [{ text: `Formalize um chamado de Infraestrutura de TI com as seguintes informações, extraídas do resumo fornecido. Verifique as seguintes informações:
+                    parts: [{ text: `Formalize um chamado de Infraestrutura de TI com as seguintes informações, extraídas do resumo fornecido. Verifique as seguintes informações,não resuma muito, todas informações trazidas no resumo, devem estar no decorrer do chamado. :
 
                         - **Título** do chamado, com o nome do setor(se for informado), e empresa no formato ( titulo = problema estritamente resumido - Empresa/setor)
                         - **Solicitante:**

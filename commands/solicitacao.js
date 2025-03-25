@@ -12,7 +12,7 @@ async function solicitacao(resumo) {
             `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
             {
                 contents: [{
-                    parts: [{ text: `Formalize um chamado de solicitação de Infraestrutura de TI com as seguintes informações, pode resumir:
+                    parts: [{ text: `Formalize um chamado de solicitação de Infraestrutura de TI com as seguintes informações, todas informações trazidas no resumo, devem estar no decorrer do chamado.
                     
                     - **Título** do chamado, incluindo setor e empresa (se disponíveis).
                     - **Solicitante**:
