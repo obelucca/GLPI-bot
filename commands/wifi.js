@@ -9,30 +9,12 @@ const row = new ActionRowBuilder().addComponents(
     .setCustomId("select")
     .setPlaceholder("Selecione uma opção")
     .addOptions([
-      {
-        label: "SouthTI",
-        value: "SouthTI",
-      },
-      {
-        label: "Plamev",
-        value: "Plamev",
-      },
-      {
-        label: "Pronto Assistência",
-        value: "ProntoAssistencia",
-      },
-      {
-        label: "Premium Clube",
-        value: "PremiumClube",
-      },
-      {
-        label: "Ta Rastreado",
-        value: "TaRastreado",
-      },
-      {
-        label: "Essential BPO",
-        value: "Essential",
-      },
+      { label: "SouthTI", value: "SouthTI" },
+      { label: "Plamev", value: "Plamev" },
+      { label: "Pronto Assistência", value: "ProntoAssistencia" },
+      { label: "Premium Clube", value: "PremiumClube" },
+      { label: "Ta Rastreado", value: "TaRastreado" },
+      { label: "Essential BPO", value: "Essential" },
     ])
 );
 
@@ -42,9 +24,15 @@ module.exports = {
     .setDescription("Redes Wi-fi disponíveis"),
 
   async execute(interaction) {
-    await interaction.reply({
-      content: "Selecione uma das redes abaixo",
+     await interaction.reply({
+      content: "Selecione uma das redes abaixo:",
       components: [row],
     });
+
+    const message = await interaction.fetchReply();
+
+    setTimeout(() => {
+      message.delete().catch(console.error);
+    }, 30000);
   },
 };

@@ -19,7 +19,7 @@ async function gerarResposta(pergunta) {
             parts: [
               {
                 text: `Gere respostas pré-definidas para dúvidas frequentes. Seguindo as seguintes regras:
-                        -Você é um assistente de suporte técnico altamente profissional e educado. Sua tarefa é fornecer uma resposta clara, objetiva e útil com base na seguinte situação descrita pelo cliente.
+                        -Você é um assistente de suporte técnico altamente profissional e educado. Sua tarefa é fornecer uma resposta clara, objetiva, suas respostas devem estar extritamente limitadas a 2000 chars, nao podem passar disso  e útil com base na seguinte situação descrita pelo cliente.
                         -Analise atentamente o contexto da solicitação.
                         -Se for uma dúvida, responda de forma informativa e direta.
                         -Se for um problema técnico, forneça possíveis soluções ou encaminhamentos.
