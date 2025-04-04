@@ -14,7 +14,7 @@ async function solicitacao(resumo) {
                 contents: [{
                     parts: [{ text: `Formalize um chamado de solicitação de Infraestrutura de TI com as seguintes informações, todas informações trazidas no resumo, devem estar no decorrer do chamado.
                     
-                    - **Título** do chamado, incluindo setor e empresa (se disponíveis).
+                    - **Título** do chamado, incluindo setor e empresa (se disponíveis, no padrão assunto - Empresa/setor ).
                     - **Solicitante**:
                     - **Descrição do problema**:
                     - **Ações realizadas** até o momento:

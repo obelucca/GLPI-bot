@@ -4,7 +4,7 @@ require('dayjs/locale/pt-br');
 
 dayjs.locale('pt-br');
 
-const equipe = ['Gabriel', 'João', 'Cléber'];
+const equipe = ['Gabriel', 'João', 'Cleber'];
 const diasSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
 
 module.exports = {
